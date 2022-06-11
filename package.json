@@ -35,16 +35,16 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "use-event",
+  "name": "use-event-handler",
   "author": "Yi-Wei Chang",
-  "module": "dist/use-event.esm.js",
+  "module": "dist/use-event-handler.esm.js",
   "size-limit": [
     {
-      "path": "dist/use-event.cjs.production.min.js",
+      "path": "dist/use-event-handler.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/use-event.esm.js",
+      "path": "dist/use-event-handler.esm.js",
       "limit": "10 KB"
     }
   ],
@@ -70,8 +70,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jchang6513/use-event"
+    "url": "https://github.com/jchang6513/use-event-handler"
   },
-  "homepage": "https://github.com/jchang6513/use-event",
+  "homepage": "https://github.com/jchang6513/use-event-handler",
   "keywords": ["react", "hook", "event", "addEventListener"]
 }

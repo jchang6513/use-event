@@ -9,7 +9,7 @@ type Options = {
 
 const useEvent = (
   type: keyof WindowEventMap,
-  listener: EventListener,
+  handler: EventListener,
   options: Options = {}
 ) => {
   const { element, once, passive, capture } = options;
@@ -21,12 +21,12 @@ const useEvent = (
 
     const opts = { once, passive, capture };
 
-    el.addEventListener(type, listener, opts);
+    el.addEventListener(type, handler, opts);
 
     return () => {
-      el.removeEventListener(type, listener, opts);
+      el.removeEventListener(type, handler, opts);
     };
-  }, [el, listener, type, once, passive, capture]);
+  }, [el, handler, type, once, passive, capture]);
 };
 
 export default useEvent;

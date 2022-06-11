@@ -75,7 +75,7 @@ const Template: Story<{ type: keyof WindowEventMap }> = props => {
     Array<{ log: string; timestamp: number }>
   >([]);
 
-  const listener = useCallback(e => {
+  const handler = useCallback(e => {
     const { type, target, timeStamp } = e as any;
     const time = new Date(timeStamp).toLocaleTimeString();
     setEventLog(org => [
@@ -87,7 +87,7 @@ const Template: Story<{ type: keyof WindowEventMap }> = props => {
     ]);
   }, []);
 
-  useEvent(type, listener, { element: ref.current });
+  useEvent(type, handler, { element: ref.current });
 
   return (
     <div ref={ref} style={STYLE}>

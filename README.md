@@ -1,11 +1,11 @@
-# use-event
+# use-event-handler
 
 A simple React Hook for listening events of HTML element
 
 ## Installation
 
 ```bash
-$ yarn add use-event
+$ yarn add use-event-handler
 ```
 
 ## Usage
@@ -22,8 +22,8 @@ export default () => {
 
 ## API
 
-`useEvent(type, callback, options)`
+`useEvent(type, handler, options)`
 
 - type*: A string of [event name](https://developer.mozilla.org/en-US/docs/Web/Events)
-- listener*: A function that will be called whenever `eventName` trigger on `element`.
+- handler*: A function that will be called whenever `eventName` trigger on `element`.
 - options: An object of `{ element?: Element, capture?: boolean, passive?: boolean, once?: boolean }`, where element is the element to add the event listener, and others will be passed to `addEvenetListener`. [MDN](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
