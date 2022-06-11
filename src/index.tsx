@@ -1,15 +1,32 @@
-import React, { FC, HTMLAttributes, ReactChild } from 'react';
+import { useEffect, useMemo } from 'react';
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {
-  /** custom content, defaults to 'the snozzberries taste like snozzberries' */
-  children?: ReactChild;
-}
-
-// Please do not use types off of a default export module or else Storybook Docs will suffer.
-// see: https://github.com/storybookjs/storybook/issues/9556
-/**
- * A custom Thing component. Neat!
- */
-export const Thing: FC<Props> = ({ children }) => {
-  return <div>{children || `the snozzberries taste like snozzberries`}</div>;
+type Options = {
+  element?: Element | Window;
+  once?: boolean;
+  passive?: boolean;
+  capture?: boolean;
 };
+
+const useEvent = (
+  type: keyof WindowEventMap,
+  listener: EventListener,
+  options: Options = {}
+) => {
+  const { element, once, passive, capture } = options;
+
+  const el = useMemo(() => element || window, [element]);
+
+  useEffect(() => {
+    if (!el || !el.addEventListener || !el.removeEventListener) return;
+
+    const opts = { once, passive, capture };
+
+    el.addEventListener(type, listener, opts);
+
+    return () => {
+      el.removeEventListener(type, listener, opts);
+    };
+  }, [el, listener, type, once, passive, capture]);
+};
+
+export default useEvent;
